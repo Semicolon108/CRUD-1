@@ -10,16 +10,25 @@ if (isset($_POST['save'])){
     $name = $_POST['name'];
     $location = $_POST['location'];
 
+    if ($name != '' & $location != ''){
+
     $mysqli->query("INSERT INTO tb_crud1 (name, location) VALUES('$name', '$location')") or die($mysqli->error);
 
     $_SESSION['message'] = "Record has been saved!";
     $_SESSION['msg_type'] = "success";
     header("location: crud.php");
+    }
+    else{
+        $_SESSION['message'] = "Sorry, the inputs cannot be empty!";
+        $_SESSION['msg_type'] = "primary";
+        header("location: crud.php");
+    }
 }
 
 if (isset($_GET['delete'])){
     $id = $_GET['delete'];
      $mysqli->query("DELETE FROM tb_crud1 WHERE id=$id") or die ($mysqli->error());
+     
      $_SESSION['message'] = "Record has been deleted!";
      $_SESSION['msg_type'] = "danger";
      header("location: crud.php");
