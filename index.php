@@ -25,12 +25,12 @@
 ?>
 
 <?php
-// This code Fetches all data from the database
+// This code Fetches all data from the database 2
     $result_details = $db_register->query("SELECT id, full_name, email_id, phone_no, address FROM tb_users");
     $row_details = $result_details->fetch_assoc();
 ?>
 <?php 
-// This code Create data into the database
+// This code Create data into the database 1
    if (isset($_POST["textSubmit"])) {
 
        $id = mt_rand(00000000000, 99999999999);
@@ -52,7 +52,7 @@
 ?>
 
 <?php 
-    // This Code Updates the the record by id from the database
+    // This Code Updates the the record by id from the database 2
    if (isset($_POST["textUpdate"])) {
 
        $id = $_POST["id"];
@@ -74,6 +74,7 @@
 ?>
 
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -103,7 +104,7 @@
     <form method="post">
         <label for="fullNAme">Full Name</label><br>
         <input type="text" name="textFullName" value="<?php
-        if ($update == true) {echo $row_edit ["full_name"]; }?>"><br><br>
+        if ($update == true) {echo $row_edit["full_name"]; }?>"><br><br>
 
         <label for="fullNAme">Eamil </label><br>
         <input type="email" name="textEmailId" value="<?php echo $row_edit["email_id"]; ?>"><br><br>
