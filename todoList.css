@@ -1,0 +1,93 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    background: gainsboro;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.body{
+    background: white;
+    background-image: url("https://img.freepik.com/free-photo/heavy-rain-shower-meadow-background-with-sparkle-bokeh-raining-nature_79161-580.jpg?size=626&ext=jpg&ga=GA1.2.2123672938.1594684800");
+    border-radius: 10px 10px 0 0;
+    width: 300px;
+    height: 500px;
+    position: relative;
+}
+.screen{
+    background-image: url("https://cdn.hswstatic.com/gif/rainbow-gallery-1.jpg");
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px 10px 0 0;
+    width: 300px;
+    height: 170px;
+    position: relative;
+}
+.fa-refresh{
+    position: absolute;
+    right: 10%;
+    top: 5%;
+}
+#date{
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color: rgb(255, 47, 238);
+    font-size: 25px;
+}
+.lineThrough{
+    text-decoration: line-through;
+    
+}
+#item{
+    position: relative;
+    display: flex;
+    margin-top: 5px;
+    border-bottom: 1px solid red;
+    color: white;
+}
+
+.fa-trash{
+    position: absolute;
+    right: 5%;
+    top: 12%;
+}
+.text{
+    margin-left: 10px;
+    color: white;
+}
+.det{
+    position: absolute;
+    bottom: 5%;
+    margin-left: 15%;
+}
+input{
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: gainsboro;
+    outline: none;
+}
+.fa-plus-circle{
+    font-size: 25px;
+}
+.fa-plus-circle:hover{
+    color: blue;
+}
+.fa-check-circle{
+    color: blue;
+    margin-top: 2%;
+    margin-left: 20px;
+}
+.fa-circle-thin{
+    color: blue;
+    margin-top: 2%;
+    margin-left: 20px;
+}
+

@@ -67,6 +67,8 @@ $result = $mysqli->query("SELECT * FROM tb_crud1") or die($mysqli->error);
             <tr>
                 <th>Name</th>
                 <th>Location</th>
+                <th>gender</th>
+                <th>permanent location</th>
                 <th colspan="2">Action</th>
             <tr>
     </thead>  
@@ -75,6 +77,8 @@ $result = $mysqli->query("SELECT * FROM tb_crud1") or die($mysqli->error);
     <tr>
         <td><?php echo $row['name']; ?></td>
         <td><?php echo $row['location']; ?></td>
+        <td><?php echo $row['gender']; ?></td>
+        <td><?php echo $row['permanent_location']; ?></td>
         <td>
             <a href= "crud.php?edit=<?php echo $row['id']; ?>"
             class ="btn btn-info">Edit</a>
@@ -105,6 +109,16 @@ function pre_r($array) {
     <div>
     <label for="">Location</label><br>
     <input type="text" name="location" value= "<?php echo $location; ?>" placeholder="enter your location">
+    </div>
+    <div>
+    <label for="">Gender</label><br>
+    <input type="radio" name="gender" value= "male">
+    <input type="radio" name="gender" value= "female">
+    </div>
+    <div>
+    <label for="">Permanent location</label><br>
+    <input type="checkbox" name="nigeria" value= "<?php echo $Nigeria; ?>">
+    <input type="checkbox" name="china" value= "<?php echo $China; ?>">
     </div>
     <div>
     <?php

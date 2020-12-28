@@ -6,13 +6,18 @@ $id = 0;
 $update = false;
 $name = '';
 $location = '';
+$gender = '';
+$permanent_location = '';
 if (isset($_POST['save'])){
     $name = $_POST['name'];
     $location = $_POST['location'];
+    $gender = $_POST['gender'];
+    
+    
 
     if ($name != '' & $location != ''){
 
-    $mysqli->query("INSERT INTO tb_crud1 (name, location) VALUES('$name', '$location')") or die($mysqli->error);
+    $mysqli->query("INSERT INTO tb_crud1 (name, location) VALUES('$name', '$location', '$gender', '$permanent_location')") or die($mysqli->error);
 
     $_SESSION['message'] = "Record has been saved!";
     $_SESSION['msg_type'] = "success";
@@ -38,10 +43,12 @@ if (isset($_GET['edit'])){
     $id = $_GET['edit'];
     $update = true;
     $result = $mysqli->query("SELECT * FROM tb_crud1 WHERE id=$id") or die ($mysqli->error());
-    if (count($result)==1){
+    if (mysqli_num_rows($result)==1){
         $row = $result->fetch_array();
         $name = $row['name'];
         $location = $row['location'];
+        $gender = $row['gender'];
+        
     }
 }
 if (isset($_POST['update'])){

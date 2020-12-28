@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo_list</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="atm.css">
+</head>
+<body>
+    <div class="body">
+        <div class="outer">
+        <input id="pin" type="number"  placeholder="enter your pin"><br>
+        <p id="message"></p>
+        <div id="mother">
+        <!---<div class="left">
+        <button class="left1" type="submit"></button><br>
+        <button class="left2" type="submit"></button><br>
+        <button class="left3" type="submit"></button><br>
+        <button class="left4" type="submit"></button><br>
+        </div>
+        <div class="right">
+        <button class="right1" type="submit"></button><br>
+        <button class="right2" type="submit"></button><br>
+        <button class="right3" type="submit"></button><br>
+        <button class="right4" type="submit"></button>
+        </div>---->
+    </div>
+    <div id= "mother2">
+
+    </div>
+    </div> 
+    <div class="keyplate">
+        <div class="buttons">
+            <div>
+            <button type="button" class="number" id="1">1</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="2">2</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="3">3</button>
+            </div>
+            <div>
+            <button type="button" class="operator"  id="can">Clear</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="4">4</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="5">5</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="6">6</button>
+            </div>
+            <div>
+            <button type="button" class="operator" id="cor">Cancel</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="7">7</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="8" >8</button>
+            </div>
+            <div>
+            <button type = "button" class="number" id="9">9</span>
+            </div>
+            <div>
+            <button type="button" class="" id=""></button>
+            </div>
+            <div>
+            <button type="button" class="number" id=".">.</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="0">0</button>
+            </div>
+            <div>
+            <button type="button" class="number" id="00">00</button>
+            </div>
+            <div>
+            <button type="button" class="operator" id="con">Confirm</button>
+            </div>
+            
+    </div>
+    </div>
+
+    <script>
+        
+        const mes = document.getElementById("message");
+        var pin = document.getElementById("pin");
+        const buts = document.getElementById("mother")
+        
+        const but1 = document.getElementsByClassName("left1");
+        const but2 = document.getElementsByClassName("left2");
+        const but3 = document.getElementsByClassName("left3");
+        const but4 = document.getElementsByClassName("left4");
+        const but5 = document.getElementsByClassName("right1");
+        const but6 = document.getElementsByClassName("right2");
+        const but7 = document.getElementsByClassName("right3");
+        const but8 = document.getElementsByClassName("right4");
+
+        const trans = ` <div class="left">
+        <button class="left1" type="submit">acc info</button><br>
+        <button class="left2" type="submit">more service</button><br>
+        <button class="left3" type="submit">deposit</button><br>
+        <button class="left4" type="submit">pin change</button><br>
+        </div>
+        <div class="right">
+        <button class="right1" type="submit">balance</button><br>
+        <button class="right2" type="submit" onclick="setTimeout(withdraw, 3000)">withdrawal</button><br>
+        <button class="right3" type="submit">fast cash</button><br>
+        <button class="right4" type="submit">bill payment</button>
+        </div>`;
+
+       
+
+        const withdrawal = ` <div class="left">
+        <button class="left1" type="submit">1000</button><br>
+        <button class="left2" type="submit">2000</button><br>
+        <button class="left3" type="submit">3000</button><br>
+        <button class="left4" type="submit">5000</button><br>
+        </div>
+        <div class="right">
+        <button class="right1" type="submit">10000</button><br>
+        <button class="right2" type="submit">15000</button><br>
+        <button class="right3" type="submit" onclick="twenty()">20000</button><br>
+        <button class="right4" type="submit">others</button>
+        </div>`;
+
+        const back = ` <div class="left">
+        
+        </div>`;
+        
+       function twenty(){
+           mes.innerHTML = "Omo Ole, u get 20,000 for account?"
+           const position = "beforeend";
+     buts.insertAdjacentHTML(position, back);
+       }
+       
+        function opt(){
+            const position = "beforeend";
+     buts.insertAdjacentHTML(position, trans);
+     mes.innerHTML= "please select transaction";
+        };
+
+    function withdraw(){
+        const position = "beforeend";
+     buts.insertAdjacentHTML(position, withdrawal);
+     mes.innerHTML= "please select amount";
+    }
+    document.addEventListener("keyup", function(event){
+    if(event.keyCode == 13){
+        const name = pin.value;
+        mes.innerHTML = `welcome ${name}, please wait...`
+        removepin();
+            if(pin.value){
+        setTimeout(opt, 5000)
+       }
+            else{
+                mes.innerHTML = "incorrect pin";
+            };
+            pin.value = "";
+    }
+});
+     function removepin(){
+    pin.remove();
+}
+    var number = document.getElementsByClassName("number");
+    for(i=0; i<number.length; i++){
+        number[i].addEventListener('click', function(event){
+            pin.value= pin.value+this.id;
+        
+        })
+    }
+    var oper = document.getElementsByClassName("operator");
+    for(i=0; i<oper.length; i++){
+        oper[i].addEventListener('click', function(){
+            if(this.id == "can"){
+                pin.value = "";
+            }
+            else if(this.id == "cor"){
+                var output = pin.value.toString();
+                output= output.substr(0, output.length-1);
+                
+                };
+            
+        
+        })
+    };
+
+
+    </script>
+</body>
+</html>
