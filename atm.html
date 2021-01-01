@@ -6,31 +6,136 @@
     <title>Todo_list</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="atm.css">
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+}
+.hide{
+    display: none;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.body{
+    background-color: silver;
+    width: 550px;
+
+}
+.outer{
+    background-color: blue;
+    padding: 20px;
+    width: 450px;
+    height: 350px;
+    position: relative;
+    margin-left: 20px;
+}
+.outer .left{
+    position: absolute;
+    left: 0;
+    margin-top: 20px;
+    
+}
+.left .left1, .left .left2, .left .left3, .left .left4{
+    margin-top: 20px;
+    width: 120px;
+    height: 30px;
+}
+
+.outer .right{
+    position: absolute;
+    right: 0;
+    margin-top: 20px;
+}
+.right .right1, .right .right2, .right .right3, .right .right4{
+    margin-top: 20px;
+    width: 120px;
+    height: 30px;
+}
+#message{
+    color: red;
+    margin-top: 20px;
+    text-align: center;
+}
+input{
+    text-align: center;
+    border: none;
+    outline: none;
+    margin-left: 100px;
+}
+.keyplate .buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin: 30px;
+}
+button{
+    margin-top: 20px;
+    font-size: large;
+    border: none;
+    outline: none;
+    background-color: silver;
+    font-weight: 700;
+}
+button :hover{
+    border: none;
+    outline: none;
+}
+#mother2{
+    background-color: red;
+}
+    </style>
 </head>
 <body>
     <div class="body">
-        <div class="outer">
-        <input id="pin" type="number"  placeholder="enter your pin"><br>
-        <p id="message"></p>
-        <div id="mother">
-        <!---<div class="left">
-        <button class="left1" type="submit"></button><br>
-        <button class="left2" type="submit"></button><br>
-        <button class="left3" type="submit"></button><br>
-        <button class="left4" type="submit"></button><br>
+        <div class="outer" id="outer">
+            <input id="pin" type="number"  placeholder="enter your pin"><br>
+            <p id="message"></p>
+            <div id="mother">
+       
+            </div>
+            <div id= "mother2">
+
+            </div>
+        </div>
+        <div class="outer hide" id="option">
+            <p id="message"></p>
+            <div id="mother">
+                <div class="left">
+        <button class="left1" type="submit">acc info</button><br>
+        <button class="left2" type="submit">more service</button><br>
+        <button class="left3" type="submit">deposit</button><br>
+        <button class="left4" type="submit">pin change</button><br>
         </div>
         <div class="right">
-        <button class="right1" type="submit"></button><br>
-        <button class="right2" type="submit"></button><br>
-        <button class="right3" type="submit"></button><br>
-        <button class="right4" type="submit"></button>
-        </div>---->
-    </div>
-    <div id= "mother2">
+        <button class="right1" type="submit">balance</button><br>
+        <button class="right2" type="submit" id="withdraw">withdrawal</button><br>
+        <button class="right3" type="submit">fast cash</button><br>
+        <button class="right4" type="submit">bill payment</button>
+        </div>
+            </div>
+            <div id= "mother2">
 
-    </div>
-    </div> 
+            </div>
+        </div>
+        <div class="outer hide" id="amount">
+            <input id="pin" type="number"  placeholder="enter your pin"><br>
+            <p id="message"></p>
+            <div class="left">
+        <button class="left1" type="submit">1000</button><br>
+        <button class="left2" type="submit">2000</button><br>
+        <button class="left3" type="submit">3000</button><br>
+        <button class="left4" type="submit">5000</button><br>
+        </div>
+        <div class="right">
+        <button class="right1" type="submit">10000</button><br>
+        <button class="right2" type="submit">15000</button><br>
+        <button class="right3" type="submit">20000</button><br>
+        <button class="right4" type="submit">others</button>
+        </div>
+        </div>
     <div class="keyplate">
         <div class="buttons">
             <div>
@@ -86,19 +191,14 @@
     </div>
 
     <script>
-        
-        const mes = document.getElementById("message");
+        /**
+         * i have cmmented ut ur logic for comparison sake
+        */
+       
+       /** const mes = document.getElementById("message");
         var pin = document.getElementById("pin");
         const buts = document.getElementById("mother")
         
-        const but1 = document.getElementsByClassName("left1");
-        const but2 = document.getElementsByClassName("left2");
-        const but3 = document.getElementsByClassName("left3");
-        const but4 = document.getElementsByClassName("left4");
-        const but5 = document.getElementsByClassName("right1");
-        const but6 = document.getElementsByClassName("right2");
-        const but7 = document.getElementsByClassName("right3");
-        const but8 = document.getElementsByClassName("right4");
 
         const trans = ` <div class="left">
         <button class="left1" type="submit">acc info</button><br>
@@ -187,7 +287,42 @@
             
         
         })
-    };
+    };*/
+    /** for a beginner i'll suggest u apply the simplest of logics so u can grasp the concept you're working with before u advance*/
+    
+
+    /** BEGIN **/
+    //Select confirmation button and bind the click event
+    document.querySelector("#con").addEventListener('click',function(){
+        //select user pin
+        let pin = document.querySelector("#pin").value;
+        //validate pin to ensure its not empty and not more than or less than 4 digits
+        if(pin !== " " && pin.length === 4){
+            //if the two conditions are met, hide the login interface
+            document.querySelector("#outer").style.display = "none";
+            //display the next interface
+            document.querySelector("#option").style.display = "block";
+        }else{
+            //if conditions arent true, display error message and restrict access to the next interface
+            document.querySelector("#message").innerHTML = 'enter correct pin';
+        }
+    })
+
+    //on the next interface, if thw withdraw button is selelcted which has a class of "right2", then perform this action
+    document.querySelector(".right2").addEventListener('click',function(){
+        //hide the options interface
+        document.querySelector("#option").style.display = "none";
+        //dispay the amunt t withdraw interface
+        document.querySelector("#amount").style.display = "block";
+    });
+
+    /** END **/
+    /**
+     * Dont get me wrong tho. you can simply apply any logic to ur project provided it is explainable.you dont have to work with my logic.
+     * Read this code well and finish this project with the simplest of logic that you can understand and as well expain to others
+     * let me know if youre having issues again.
+     *  Happy coding mate 
+     * /
 
 
     </script>
